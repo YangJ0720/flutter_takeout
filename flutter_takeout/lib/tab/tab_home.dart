@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_takeout/network/dio_manager.dart';
 import 'package:flutter_takeout/search.dart';
 import 'package:flutter_takeout/view/banner_view_widget.dart';
+import 'package:flutter_takeout/view/home_page_category.dart';
 
 /// 选项卡：首页
 class TabHome extends StatelessWidget {
@@ -113,9 +114,16 @@ class TabHome extends StatelessWidget {
                 color: Color(0xFFEAEAEA),
                 borderRadius: BorderRadius.all(Radius.circular(5))),
           ),
-          Text(
-            '优惠专区',
-            style: TextStyle(fontSize: 24),
+          Container(
+            child: HomePageCategory(),
+            height: 125,
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Text(
+              '优惠专区',
+              style: TextStyle(fontSize: 24),
+            ),
           ),
         ],
       ),
