@@ -13,19 +13,30 @@ class HomePageCategory extends StatelessWidget {
   }
 }
 
-class HomePageContent extends StatelessWidget {
-  final _column = List<Column>();
+class HomePageContent extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => HomePageState();
+}
 
-  Column createColumn(String path, String text) {
-    return Column(
-      children: <Widget>[
-        Image.asset(
-          path,
-          width: 40,
-          height: 40,
-        ),
-        Text(text),
-      ],
+class HomePageState extends State<HomePageContent> {
+  final _column = List<Widget>();
+
+  Widget createColumn(String path, String text) {
+    return InkWell(
+      child: Column(
+        children: <Widget>[
+          Image.asset(
+            path,
+            width: 40,
+            height: 40,
+          ),
+          Text(text),
+        ],
+      ),
+      onTap: () {
+        print('text = $text');
+        Scaffold.of(context).showSnackBar(SnackBar(content: Text(text)));
+      },
     );
   }
 

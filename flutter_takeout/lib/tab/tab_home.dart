@@ -6,9 +6,32 @@ import 'package:flutter_takeout/view/home_page_category.dart';
 
 /// 选项卡：首页
 class TabHome extends StatelessWidget {
+
+  List<Widget> _getBannerViewItem() {
+    /// 轮播网络图片
+    List<Widget> _urls = List<Widget>();
+    /// 初始化网络图片轮播页
+    _urls.add(createImageByUrl(
+        'https://img.mukewang.com/szimg/5c32c05b085f95bf06000338-360-202.jpg'));
+    _urls.add(createImageByUrl(
+        'https://img.mukewang.com/szimg/5c3ef588088403df06000338-360-202.jpg'));
+    _urls.add(createImageByUrl(
+        'https://img.mukewang.com/szimg/5c62a4dc0812e84106000338-360-202.jpg'));
+    _urls.add(createImageByUrl(
+        'https://img.mukewang.com/szimg/58f57d200001461105400300-360-202.jpg'));
+    return _urls;
+  }
+
   /// 获取天气信息
   void _getWeatherInfo() async {
     DioManager.getWeatherInfo();
+  }
+
+  Image createImageByUrl(String url) {
+    return Image.network(
+      url,
+      fit: BoxFit.fill,
+    );
   }
 
   @override
@@ -109,7 +132,7 @@ class TabHome extends StatelessWidget {
           Container(
             margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
             height: 120,
-            child: BannerViewWidget(),
+            child: BannerViewWidget(items: _getBannerViewItem()),
             decoration: BoxDecoration(
                 color: Color(0xFFEAEAEA),
                 borderRadius: BorderRadius.all(Radius.circular(5))),
